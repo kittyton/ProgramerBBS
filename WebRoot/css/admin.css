@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+
+div.superAdmin
+{
+	border-style:dotted;
+	border-width:2px;
+	border-color:#CC6600;
+	padding:0.5cm;
+	width:11cm;
+	margin-bottom:0.5cm;
+	height:6cm;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	color:#003300;
+}
+
+div.superAdmin2
+{
+	width:11cm;
+	height:8cm;
+	overflow-y: scroll;
+}
+
+div.rightPart
+{
+	padding:0.5cm;	
+	float:right;
+	display:inline;
+	width:12cm;
+	position:relative;
+	left:-4cm;
+	top:0.6cm;
+}
+
+div.leftPart
+{
+	padding:0.5cm;
+	margin:1cm, 0cm;
+	position:relative;
+	left:3.5cm;
+}
+
+div.little
+{
+	position: relative;
+  	left: 6cm;
+  	top: 0.5cm;
+}
+
+div.little2
+{
+	position: relative;
+  	left: 7cm;
+  	top: 3cm;
+}
+
+div.alterPass
+{
+	position: relative;
+  	left: 3.5cm;
+  	top:0.3cm;
+  	font-size:1.2em;
+  	
+}

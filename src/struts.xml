@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<include file="struts-default.xml"/>
+	<constant name="struts.devMode" value="true"/>
+	<package name="default" extends="struts-default">
+
+<!-- *************************************fish's superAdmin struts ******************************************-->	
+		<action name="removeAdmin" class="fish.ui.admin.RemoveAdminAction">
+			<result name="input">/error.jsp</result>
+			<result name="success">/super_admin.jsp</result>
+		</action>
+		
+		<action name="addAdmin" class="fish.ui.admin.AddAdminAction">
+			<result name="input">/super_admin.jsp</result>
+			<result name="success">/super_admin.jsp</result>
+		</action>
+		
+		<action name="superHomePage" class="fish.session.admin.Admin">
+			<result name="input">/error.jsp</result>
+			<result name="success">/super_admin.jsp</result>
+		</action>
+		
+		<action name="adminAlterPass" class="fish.ui.admin.AdminAlterPass">
+			<result name="input">/adminAlterPass.jsp</result>
+			<result name="success">/adminAlterPass.jsp</result>
+		</action>
+		
+		<action name="alterModuleShow" class="fish.ui.admin.AlterModuleShowAction">
+			<result name="input">/adminModule.jsp</result>
+			<result name="success">/adminModule.jsp</result>
+		</action>
+		
+		<action name="alterModule" class="fish.ui.admin.AlterModuleAction">
+			<result name="input">/adminModule.jsp</result>
+			<result name="success">/adminModule.jsp</result>
+		</action>
+		
+		<action name="removeModule" class="fish.ui.admin.RemoveModuleAction">
+			<result name="input">/adminModule.jsp</result>
+			<result name="success">/adminModule.jsp</result>
+		</action>
+		
+		<action name="alterChildModuleShow" class="fish.ui.admin.AlterChildModuleShowAction">
+			<result name="input">/adminChildModule.jsp</result>
+			<result name="success">/adminChildModule.jsp</result>
+		</action>
+		
+		<action name="removeChildModule" class="fish.ui.admin.RemoveChildModuleAction">
+			<result name="input">/adminChildModule.jsp</result>
+			<result name="success">/adminChildModule.jsp</result>
+		</action>
+		
+		<action name="alterChildModule" class="fish.ui.admin.AlterChildModuleAction">
+			<result name="input">/adminChildModule.jsp</result>
+			<result name="success">/adminChildModule.jsp</result>
+		</action>
+		
+		<action name="addChildModule" class="fish.ui.admin.AddChildModuleAction">
+			<result name="input">/adminChildModule.jsp</result>
+			<result name="success">/adminChildModule.jsp</result>
+		</action>
+		
+		<action name="addModule" class="fish.ui.admin.AddModuleAction">
+			<result name="input">/super_admin.jsp</result>
+			<result name="success">/super_admin.jsp</result>
+		</action>	
+		
+<!-- *************************************fish's Admin struts ******************************************-->		
+		
+		<action name="silence" class="fish.ui.admin.UserSilencedAction">
+			<result name="input">/index.jsp</result>
+			<result name="success">/silencedUser.jsp</result>
+		</action>
+		
+		<action name="removemTopic" class="fish.ui.admin.RmvTopicAction">
+			<result name="input" >/index.jsp</result>
+			<result name="success">/index.jsp</result>
+		</action>
+		
+<!-- *************************************qq's struts ******************************************-->		
+		
+		<action name="Register" class="myaction.RegisterAction">
+			<param name="savePath">/images</param>
+			<result name="success">/index.jsp</result>
+			<result name="input">/register.jsp</result>
+		</action>
+		<action name="Login" class="myaction.LoginAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/register.jsp</result>
+			<result name="error">/login.jsp</result>
+			<result name="none">/index.jsp</result>
+			<result name="login" type="redirectAction">
+				<param name="actionName">superHomePage</param>
+			</result>
+		</action>
+		<action name="Selfmanage" class="myaction.SelfManageAction">
+			<result name="success">/selfinfo.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="ModifySelfInfo" class="myaction.ModifySelfAction">
+			<param name="savePath">/images</param>
+			<result name="success" type="redirectAction">
+	
+				<param name="actionName">Selfmanage</param>
+			</result>
+			<result name="input">/modifyselfinfo.jsp</result>
+		</action>
+		<action name="rand" class="myaction.RandomPictureAction">
+			<result type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="Votelanch" class="myaction.VotelanchAction">
+			<!-- <result name="success">/showallvote.jsp</result> -->
+			<result name="success" type="redirectAction">
+        	<param name="actionName">Showvotes</param>
+        	</result>
+			<result name="input">/login.jsp</result>
+			<result name="error">/deadlineerror.jsp</result>
+            <result name="login">/nodeadline.jsp</result>
+		</action>
+		<action name="Showvotes" class="myaction.ShowVotesAction">
+			<result name="success">/showallvote.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="Participatevote" class="myaction.ParticipateVoteAction">
+			<result name="success">/participatevote.jsp</result>
+		</action>
+		<action name="Handlevote" class="myaction.HandleVoteAction">
+			<result name="success" type="redirectAction">
+        	<param name="actionName">Showvoteresult</param>
+        	<param name="voteID">${voteID}</param>
+        </result>
+        <result name="error">/errorvote.jsp</result>
+        <result name="input">/afterdeadlinevote.jsp</result>
+        <result name="login">/noselecterror.jsp</result>	
+		</action>
+		<action name="Exit" class="myaction.ExitAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="Showvoteresult" class="myaction.ShowVoteResultAction">
+			<result name="success">/voteresult.jsp</result>
+			<result name="error">/voteresulterror.jsp</result>
+		</action>
+<!-- *************************************ju's struts ******************************************-->
+		<action name="goHome" class = "legnaaction.GoHomeAction">
+			<result name = "success">/frontHome.jsp</result>
+		</action>
+		<action name="dosearch" class = "legnaaction.doSearch">
+			<result name = "success">/searchResult.jsp</result>
+		</action>
+		<action name="latestTopic" class = "legnaaction.lastestTopic">
+			<result name = "success">/homeDown.jsp</result>
+		</action>
+		<action name="showTopic" class = "legnaaction.showTopics">
+			<result name = "success">/showTopics.jsp</result>
+		</action>
+		<action name="titleInfo" class = "legnaaction.TitleInfo">
+			<result name = "success">/titleInfo.jsp</result>
+		</action>
+		<action name="doReply" class = "legnaaction.DoReply">
+			<result name = "success" type="chain">titleInfo</result>
+			<result name = "error">/isSilence.jsp</result>
+			<result name = "fail">/login.jsp</result>
+			
+		</action>
+		<action name="doPo" class = "legnaaction.DoPost">
+			<result name = "fail">/login.jsp</result>
+			<result name = "success">/Post.jsp</result>
+			<result name = "ok">/index.jsp</result>
+			<result name = "error">/isSilence.jsp</result>
+			<result name = "silenced">/Post.jsp</result>
+		</action>
+		
+	</package>
+</struts>    
